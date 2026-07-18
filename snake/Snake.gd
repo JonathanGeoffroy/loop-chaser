@@ -10,7 +10,9 @@ var SnakeHead := preload("res://snake/SnakeHead.tscn")
 
 
 func _ready() -> void:
-	append(SnakeHead.instantiate())
+	var head: SnakeHead = SnakeHead.instantiate()
+	append(head)
+	head.eated.connect(on_eat)
 
 
 func _process(delta: float) -> void:
@@ -46,3 +48,7 @@ func _process(delta: float) -> void:
 func append(segment: Node2D) -> void:
 	segments.append(segment)
 	add_child(segment)
+
+
+func on_eat() -> void:
+	print("ON EAT")
