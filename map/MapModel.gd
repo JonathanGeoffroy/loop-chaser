@@ -22,14 +22,19 @@ class Line:
 		return "[%s < %s >]" % [get_class(), ", ".join(props)]
 
 
-class Cross:
+class CrossRoad:
 	var position: Vector2
+	var connected_lines: Array[Line] = []
+
+	func _init(position: Vector2):
+		self.position = position
+		self.connected_lines = []
 
 
 var lines: Array[Line]
-var crosses: Array[Cross]
+var crossRoads: Array[CrossRoad]
 
 
 func _init() -> void:
 	lines = []
-	crosses = []
+	crossRoads = []

@@ -4,7 +4,7 @@ var map: MapModel
 
 
 func _ready() -> void:
-	map = MapGenerator.new().generate(42, 50, 10)
+	map = MapGenerator.new().generate(42, 100, 25)
 	display_lines()
 
 
