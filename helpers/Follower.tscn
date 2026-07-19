@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://cc7u5aa7fvkh6"]
+
+[ext_resource type="Script" uid="uid://cbwv8a716ikd1" path="res://helpers/Follower.gd" id="1_h2oyl"]
+
+[node name="Follower" type="Node2D" unique_id=2029178058]
+script = ExtResource("1_h2oyl")

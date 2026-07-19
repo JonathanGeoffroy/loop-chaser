@@ -1,12 +1,17 @@
 [gd_scene format=3 uid="uid://brkxs68f0i0ll"]
 
 [ext_resource type="Script" uid="uid://bgfwm2uxi1mok" path="res://game/Game.gd" id="1_fafdd"]
+[ext_resource type="PackedScene" uid="uid://bldrtedl0q6sf" path="res://cursor/Cursor.tscn" id="2_m71xk"]
 [ext_resource type="PackedScene" uid="uid://dpnqaxtcfudyj" path="res://snake/Snake.tscn" id="2_qdja7"]
 
 [node name="Game" type="Node2D" unique_id=1180098399]
 script = ExtResource("1_fafdd")
 
+[node name="Cursor" parent="." unique_id=2046943281 instance=ExtResource("2_m71xk")]
+unique_name_in_owner = true
+
 [node name="Snake" parent="." unique_id=136338252 instance=ExtResource("2_qdja7")]
+unique_name_in_owner = true
 
 [node name="FoodGeneratorTimer" type="Timer" parent="." unique_id=103055315]
 unique_name_in_owner = true

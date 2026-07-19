@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://syxqqaivfmyu"]
+
+[ext_resource type="Script" uid="uid://c72fu6w0p4xnh" path="res://snake/SnakePart.gd" id="1_0uwyn"]
+[ext_resource type="Texture2D" uid="uid://cj84eg8uaouj4" path="res://snake/snakePart.png" id="1_ragay"]
+
+[node name="SnakePart" type="Node2D" unique_id=900317784]
+top_level = true
+script = ExtResource("1_0uwyn")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=847711917]
+texture = ExtResource("1_ragay")

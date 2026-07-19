@@ -1,13 +1,12 @@
 [gd_scene format=3 uid="uid://d1fplkxsim3pg"]
 
 [ext_resource type="Script" uid="uid://d3lqpdrqknvl0" path="res://food/Food.gd" id="1_drx06"]
-[ext_resource type="Texture2D" uid="uid://cj84eg8uaouj4" path="res://food/food.png" id="1_vsit0"]
+[ext_resource type="Texture2D" uid="uid://c7wvhne3r1re3" path="res://food/food.png" id="1_vsit0"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_hltw1"]
 radius = 64.99999
 
 [node name="Food" type="Area2D" unique_id=697352328 groups=["food"]]
-scale = Vector2(0.2, 0.2)
 script = ExtResource("1_drx06")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1270906198]

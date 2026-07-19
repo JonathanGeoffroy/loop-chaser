@@ -7,6 +7,8 @@ var Food = preload("res://food/Food.tscn")
 
 
 func _ready() -> void:
+	%Snake.followed = %Cursor
+
 	for i in nb_food_start:
 		on_generate_food()
 
