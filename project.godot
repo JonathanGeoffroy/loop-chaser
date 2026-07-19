@@ -27,6 +27,12 @@ window/stretch/aspect="expand"
 [global_group]
 
 food=""
+snakePart=""
+
+[layer_names]
+
+2d_render/layer_1="SnakeFood"
+2d_render/layer_2="SnakePart"
 
 [physics]
 

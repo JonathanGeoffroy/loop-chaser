@@ -42,6 +42,10 @@ func append(segment: Node2D) -> void:
 		var last_segment := segments[segments.size() - 1]
 		var spawn_pos = last_segment.global_position + (Vector2(-1, 0) * follow_distance)
 		segment.global_position = spawn_pos
+		
+		if segments.size() == 1:
+			# TODO JGE head hits the first part on appened
+			pass;
 
 	segments.append(segment)
 	add_child(segment)
