@@ -1,0 +1,60 @@
+[gd_scene format=3 uid="uid://cs6xdy4wm4t07"]
+
+[ext_resource type="Script" uid="uid://fouyfbexqm86" path="res://Main/MainMenu.gd" id="1_dkeq4"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_pjjmk"]
+font_size = 64
+
+[node name="MainMenu" type="Control" unique_id=1829623877]
+layout_mode = 3
+anchors_preset = 0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("1_dkeq4")
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=767930505]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = -50.0
+offset_right = 1166.0
+offset_bottom = 655.0
+grow_horizontal = 2
+size_flags_horizontal = 6
+size_flags_vertical = 6
+theme_override_constants/margin_left = 64
+theme_override_constants/margin_top = 64
+theme_override_constants/margin_right = 64
+theme_override_constants/margin_bottom = 64
+
+[node name="TopSection" type="CenterContainer" parent="MarginContainer" unique_id=1745184061]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+
+[node name="Title" type="Label" parent="MarginContainer/TopSection" unique_id=192593465]
+layout_mode = 2
+text = "Loop Chaser"
+label_settings = SubResource("LabelSettings_pjjmk")
+
+[node name="MenuSection" type="CenterContainer" parent="MarginContainer" unique_id=467216469]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/MenuSection" unique_id=907364418]
+custom_minimum_size = Vector2(250, 0)
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="NewGame" type="Button" parent="MarginContainer/MenuSection/VBoxContainer" unique_id=8830101]
+layout_mode = 2
+text = "New game"
+
+[node name="HowToPlay" type="Button" parent="MarginContainer/MenuSection/VBoxContainer" unique_id=852308916]
+layout_mode = 2
+text = "How to Play"
+
+[node name="Credits" type="Button" parent="MarginContainer/MenuSection/VBoxContainer" unique_id=1153914327]
+layout_mode = 2
+text = "Credits"
+
+[connection signal="pressed" from="MarginContainer/MenuSection/VBoxContainer/NewGame" to="." method="_on_new_game_pressed"]
