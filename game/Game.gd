@@ -34,11 +34,14 @@ func on_snake_circled(snake_parts: Array[Node2D]) -> void:
 		if child.is_in_group("food"):
 			var food: Food = child
 			if Geometry2D.is_point_in_polygon(food.global_position, polygon):
-				food.queue_free()
+				# TODO JGE compute multiplicator
+				on_snake_eat(food)
 
 	for i in range(1, snake_parts.size()):
 		snake_parts[i].queue_free()
 
 
 func on_snake_eat(food: Food):
+	var main: Main = get_parent()
+	main.add_score(10)
 	food.queue_free()

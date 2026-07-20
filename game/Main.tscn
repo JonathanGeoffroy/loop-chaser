@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://b77enyefu0o8t"]
+
+[ext_resource type="Script" uid="uid://2ayoegv5da52" path="res://game/Main.gd" id="1_2fjjk"]
+[ext_resource type="PackedScene" uid="uid://dfb7nlg8xlqxr" path="res://game/HUD.tscn" id="1_8gaax"]
+[ext_resource type="PackedScene" uid="uid://brkxs68f0i0ll" path="res://game/Game.tscn" id="2_2fjjk"]
+
+[node name="Main" type="Node2D" unique_id=575476164]
+script = ExtResource("1_2fjjk")
+
+[node name="HUD" parent="." unique_id=1323792389 instance=ExtResource("1_8gaax")]
+unique_name_in_owner = true
+
+[node name="Game" parent="." unique_id=1180098399 instance=ExtResource("2_2fjjk")]
+position = Vector2(0, 41)
+nb_food_start = 10

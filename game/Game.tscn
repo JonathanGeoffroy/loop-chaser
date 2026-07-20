@@ -6,6 +6,7 @@
 
 [node name="Game" type="Node2D" unique_id=1180098399]
 script = ExtResource("1_fafdd")
+nb_food_start = null
 
 [node name="Cursor" parent="." unique_id=2046943281 instance=ExtResource("2_m71xk")]
 unique_name_in_owner = true

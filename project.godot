@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="short-circuit"
-run/main_scene="uid://brkxs68f0i0ll"
+run/main_scene="uid://b77enyefu0o8t"
 config/features=PackedStringArray("4.7", "GL Compatibility")
 config/icon="res://icon.svg"
 
