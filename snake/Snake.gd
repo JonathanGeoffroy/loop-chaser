@@ -1,6 +1,9 @@
 class_name Snake
 extends Node2D
 
+signal circled(parts: Array[Node2D])
+signal eated
+
 var SnakeHead := preload("res://snake/SnakeHead.tscn")
 var SnakePart := preload("res://snake/SnakePart.tscn")
 
@@ -15,6 +18,7 @@ func _ready() -> void:
 	var head: SnakeHead = SnakeHead.instantiate()
 	append(head)
 	head.eated.connect(on_eat)
+	head.tail_hitted.connect(on_hit_itself)
 
 
 func _process(delta: float) -> void:
@@ -42,15 +46,28 @@ func append(segment: Node2D) -> void:
 		var last_segment := segments[segments.size() - 1]
 		var spawn_pos = last_segment.global_position + (Vector2(-1, 0) * follow_distance)
 		segment.global_position = spawn_pos
-		
-		if segments.size() == 1:
-			# TODO JGE head hits the first part on appened
-			pass;
 
 	segments.append(segment)
 	add_child(segment)
 
 
-func on_eat() -> void:
+func on_eat(food: Food) -> void:
+	eated.emit(food)
 	var segment := SnakePart.instantiate()
 	append(segment)
+
+
+func on_hit_itself(snake_part: SnakePart) -> void:
+	var segment_index = segments.find(snake_part)
+
+	if segment_index < 4:
+		return
+
+	var parts: Array[Node2D] = []
+	for i in range(0, segment_index + 1):
+		parts.append(segments[i])
+
+	for i in range(segment_index, 0, -1):
+		segments.remove_at(i)
+
+	circled.emit(parts)

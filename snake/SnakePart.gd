@@ -1,4 +1,4 @@
-class_name SnakePart 
+class_name SnakePart
 extends Node2D
 
 
