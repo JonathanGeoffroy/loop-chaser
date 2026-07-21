@@ -19,6 +19,7 @@ config/icon="res://icon.svg"
 
 Globals="*uid://dt81cyslpu4sc"
 Token="*uid://dhh6cfs7nkrkp"
+Polygon="*uid://cek56ts0nvxyc"
 
 [display]
 

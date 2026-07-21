@@ -59,13 +59,32 @@ func on_snake_circled(snake_parts: Array[Node2D]) -> void:
 		if Geometry2D.is_point_in_polygon(food.global_position, polygon):
 			foods_to_remove.append(food)
 			foods.erase(food)
-			food.queue_free()
+			food.disable()
 
 	for generator in generators:
 		if Geometry2D.is_point_in_polygon(generator.global_position, polygon):
 			generators_to_remove.append(generator)
 			generators.erase(generator)
-			generator.queue_free()
+			generator.disable()
+
+	var items = snake_parts + generators_to_remove + foods_to_remove
+	items.remove_at(0)  # Remove snake head
+	var center: Vector2 = Polygon.get_polygon_center(polygon)
+	var tween := create_tween().set_parallel(true)
+	for item in items:
+		if is_instance_valid(item):
+			(
+				tween
+				. tween_property(item, "global_position", center, Globals.animation_speed)
+				. set_trans(Tween.TRANS_QUAD)
+				. set_ease(Tween.EASE_IN)
+			)
+
+	await tween.finished
+
+	for item in items:
+		if is_instance_valid(item):
+			item.queue_free()
 
 	add_score(
 		(
@@ -73,9 +92,6 @@ func on_snake_circled(snake_parts: Array[Node2D]) -> void:
 			+ generators_to_remove.size() * Globals.generator_points
 		)
 	)
-
-	for i in range(1, snake_parts.size()):
-		snake_parts[i].queue_free()
 
 
 func add_score(amount: int):

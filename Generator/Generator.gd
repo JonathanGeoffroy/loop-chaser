@@ -15,3 +15,7 @@ func generate_food():
 	food.appears()
 	var game: Game = get_parent()
 	game.add_food(food)
+
+
+func disable():
+	pass

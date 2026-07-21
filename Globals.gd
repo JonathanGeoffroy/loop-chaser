@@ -8,6 +8,8 @@ const food_size := 48
 const generator_points := 50
 const food_points := 10
 
+const animation_speed := 0.3
+
 var nb_lifes := 3
 var seed := 0
 var score := 0

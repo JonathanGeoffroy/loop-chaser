@@ -44,3 +44,7 @@ func appears():
 	change_direction()
 	var offset: Vector2 = Vector2.from_angle(angle) * 128.0
 	global_position += offset
+
+
+func disable():
+	$CollisionShape2D.disabled = true
