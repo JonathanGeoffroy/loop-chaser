@@ -10,14 +10,15 @@ config_version=5
 
 [application]
 
-config/name="short-circuit"
-run/main_scene="uid://cs6xdy4wm4t07"
+config/name="Loop Chaser"
+run/main_scene="uid://b77enyefu0o8t"
 config/features=PackedStringArray("4.7", "GL Compatibility")
 config/icon="res://icon.svg"
 
 [autoload]
 
 Globals="*uid://dt81cyslpu4sc"
+Token="*uid://dhh6cfs7nkrkp"
 
 [display]
 
@@ -28,6 +29,7 @@ window/stretch/aspect="expand"
 
 food=""
 snakePart=""
+cursor=""
 
 [layer_names]
 

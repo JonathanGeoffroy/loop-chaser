@@ -1,9 +1,12 @@
 class_name Main
 extends Node2D
 
-var score := 0
+
+func _ready() -> void:
+	Globals.score = 0
+	%HUD.set_score(Globals.score)
 
 
 func add_score(add_score: int) -> void:
-	score += add_score
-	%HUD.set_score(score)
+	Globals.score += add_score
+	%HUD.set_score(Globals.score)

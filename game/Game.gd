@@ -14,6 +14,12 @@ func _ready() -> void:
 	for i in nb_food_start:
 		on_generate_food()
 
+	handle_start()
+
+
+func handle_start():
+	%Cursor.start_invincible()
+
 
 func on_generate_food() -> void:
 	var food: Food = Food.instantiate()

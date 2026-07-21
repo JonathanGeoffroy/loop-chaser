@@ -32,10 +32,42 @@ layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 0
 
-[node name="Title" type="Label" parent="MarginContainer/TopSection" unique_id=192593465]
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/TopSection" unique_id=2050940009]
+layout_mode = 2
+
+[node name="Title" type="Label" parent="MarginContainer/TopSection/VBoxContainer" unique_id=192593465]
 layout_mode = 2
 text = "Loop Chaser"
 label_settings = SubResource("LabelSettings_pjjmk")
+
+[node name="ChasingContainer" type="VBoxContainer" parent="MarginContainer/TopSection/VBoxContainer" unique_id=2037505941]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="ChasingUsernameContainer" type="HBoxContainer" parent="MarginContainer/TopSection/VBoxContainer/ChasingContainer" unique_id=2128090727]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/TopSection/VBoxContainer/ChasingContainer/ChasingUsernameContainer" unique_id=2043253470]
+layout_mode = 2
+text = "Chasing:"
+
+[node name="ChasingUsername" type="Label" parent="MarginContainer/TopSection/VBoxContainer/ChasingContainer/ChasingUsernameContainer" unique_id=1818053628]
+unique_name_in_owner = true
+layout_mode = 2
+text = "My super User name"
+
+[node name="ChasingScoreContainer" type="HBoxContainer" parent="MarginContainer/TopSection/VBoxContainer/ChasingContainer" unique_id=446668757]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/TopSection/VBoxContainer/ChasingContainer/ChasingScoreContainer" unique_id=1995172744]
+layout_mode = 2
+text = "Score:"
+
+[node name="ChasingScore" type="Label" parent="MarginContainer/TopSection/VBoxContainer/ChasingContainer/ChasingScoreContainer" unique_id=1506957397]
+unique_name_in_owner = true
+layout_mode = 2
+text = "1002323204370"
 
 [node name="MenuSection" type="CenterContainer" parent="MarginContainer" unique_id=467216469]
 layout_mode = 2
@@ -47,11 +79,11 @@ theme_override_constants/separation = 16
 
 [node name="NewGame" type="Button" parent="MarginContainer/MenuSection/VBoxContainer" unique_id=8830101]
 layout_mode = 2
-text = "New game"
+text = "Play !"
 
 [node name="HowToPlay" type="Button" parent="MarginContainer/MenuSection/VBoxContainer" unique_id=852308916]
 layout_mode = 2
-text = "How to Play"
+text = "How to Play ?"
 
 [node name="Credits" type="Button" parent="MarginContainer/MenuSection/VBoxContainer" unique_id=1153914327]
 layout_mode = 2

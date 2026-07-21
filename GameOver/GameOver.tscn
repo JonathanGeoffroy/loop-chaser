@@ -1,0 +1,78 @@
+[gd_scene format=3 uid="uid://d0jmrdp6kel3j"]
+
+[ext_resource type="Script" uid="uid://2igsx3h2phcq" path="res://GameOver/GameOver.gd" id="1_bed4b"]
+
+[node name="GameOver" type="Control" unique_id=1403696943]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_bed4b")
+
+[node name="CenterContainer" type="CenterContainer" parent="." unique_id=274307897]
+layout_mode = 0
+offset_right = 1154.0
+offset_bottom = 644.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer" unique_id=1631084573]
+custom_minimum_size = Vector2(800, 0)
+layout_mode = 2
+theme_override_constants/separation = 32
+
+[node name="Title" type="Label" parent="CenterContainer/VBoxContainer" unique_id=63438427]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 64
+text = "Game over"
+
+[node name="ScoreContainer" type="HBoxContainer" parent="CenterContainer/VBoxContainer" unique_id=1207670475]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="HighscoreLabel" type="Label" parent="CenterContainer/VBoxContainer/ScoreContainer" unique_id=2040514420]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Your score:"
+
+[node name="Highscore" type="Label" parent="CenterContainer/VBoxContainer/ScoreContainer" unique_id=1537322244]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "1234"
+
+[node name="VBoxContainer" type="HBoxContainer" parent="CenterContainer/VBoxContainer" unique_id=865351060]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CenterContainer/VBoxContainer/VBoxContainer" unique_id=1433312991]
+layout_mode = 2
+text = "Username: "
+
+[node name="UserName" type="LineEdit" parent="CenterContainer/VBoxContainer/VBoxContainer" unique_id=1592949581]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Highscore Chaser"
+placeholder_text = "Your username"
+
+[node name="URLContainer" type="HBoxContainer" parent="CenterContainer/VBoxContainer" unique_id=285738672]
+layout_mode = 2
+
+[node name="URL" type="LineEdit" parent="CenterContainer/VBoxContainer/URLContainer" unique_id=1507754292]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 2
+size_flags_horizontal = 3
+editable = false
+
+[node name="CopyButton" type="Button" parent="CenterContainer/VBoxContainer/URLContainer" unique_id=696637450]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Copy URL"
+
+[node name="RetryButton" type="Button" parent="CenterContainer/VBoxContainer" unique_id=1736442471]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Retry ?"
+
+[connection signal="text_changed" from="CenterContainer/VBoxContainer/VBoxContainer/UserName" to="." method="_on_username_changed"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/URLContainer/CopyButton" to="." method="_on_copy_button_pressed"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/RetryButton" to="." method="_on_retry_button_pressed"]

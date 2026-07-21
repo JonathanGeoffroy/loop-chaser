@@ -7,7 +7,45 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_pjjmk"]
 radius = 64.03124
 
-[node name="Cursor" type="Area2D" unique_id=2046943281]
+[sub_resource type="Animation" id="Animation_ofrjf"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:modulate:a")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1.0]
+}
+
+[sub_resource type="Animation" id="Animation_dlxi6"]
+resource_name = "invincibility"
+length = 0.39999999999999997
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:modulate:a")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [1.0, 0.0, 1.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_sesew"]
+_data = {
+&"RESET": SubResource("Animation_ofrjf"),
+&"invincibility": SubResource("Animation_dlxi6")
+}
+
+[node name="Cursor" type="Area2D" unique_id=2046943281 groups=["cursor"]]
 scale = Vector2(0.2, 0.2)
 collision_mask = 0
 script = ExtResource("1_yx3cf")
@@ -19,3 +57,6 @@ texture = ExtResource("1_m2vak")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1314114337]
 shape = SubResource("CircleShape2D_pjjmk")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=2032429721]
+libraries/ = SubResource("AnimationLibrary_sesew")
