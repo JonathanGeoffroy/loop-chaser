@@ -3,7 +3,7 @@ extends Node2D
 
 
 func _ready() -> void:
-	Globals.score = 0
+	Globals.reset()
 	%HUD.set_score(Globals.score)
 
 

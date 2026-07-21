@@ -17,4 +17,5 @@ unique_name_in_owner = true
 unique_name_in_owner = true
 autostart = true
 
+[connection signal="hit" from="Cursor" to="." method="_on_cursor_hit"]
 [connection signal="timeout" from="FoodGeneratorTimer" to="." method="on_generate_food"]

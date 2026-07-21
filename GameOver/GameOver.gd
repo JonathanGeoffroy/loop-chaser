@@ -6,13 +6,11 @@ var username_regexp = RegEx.new()
 func _ready() -> void:
 	username_regexp.compile("[^a-zA-Z0-9_]")
 	var token := compute_token()
+
 	if token != null:
 		Globals.seed = token.seed
 		Globals.chasing_name = token.user_name
 		Globals.chasing_score = token.score
-
-	elif Globals.seed == 0:
-		Globals.seed = randi()
 
 	%Highscore.text = str(Globals.score)
 	%UserName.text = Globals.user_name

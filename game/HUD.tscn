@@ -37,6 +37,14 @@ text = "0"
 layout_mode = 2
 size_flags_horizontal = 3
 
+[node name="Lifes" type="HBoxContainer" parent="Control/MarginContainer/HBoxContainer" unique_id=1771649587]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="Spacer2" type="Control" parent="Control/MarginContainer/HBoxContainer" unique_id=1979477548]
+layout_mode = 2
+size_flags_horizontal = 3
+
 [node name="ChasingScoreContainer" type="HBoxContainer" parent="Control/MarginContainer/HBoxContainer" unique_id=2133830233]
 unique_name_in_owner = true
 layout_mode = 2

@@ -14,4 +14,5 @@ func on_colide(area: Area2D) -> void:
 		tail_hitted.emit(area)
 
 	elif area.is_in_group("cursor"):
-		get_tree().change_scene_to_file("res://GameOver/GameOver.tscn")
+		var cursor: Cursor = area
+		cursor.get_hit()

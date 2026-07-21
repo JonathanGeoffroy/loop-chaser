@@ -9,7 +9,7 @@ height = 123.33333
 
 [node name="SnakeHead" type="Area2D" unique_id=1813477475 groups=["snakePart"]]
 scale = Vector2(0.6, 0.6)
-collision_mask = 3
+collision_mask = 7
 script = ExtResource("1_nxuvt")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=780807643]

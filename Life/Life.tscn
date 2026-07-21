@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://djxkhr8h4xiol"]
+
+[ext_resource type="Script" uid="uid://df5trnxq1no4h" path="res://Life/Life.gd" id="1_f0slc"]
+[ext_resource type="Texture2D" uid="uid://bsqvxqoy1w4tl" path="res://Life/life.png" id="2_soojs"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_4e1r7"]
+radius = 59.008472
+
+[node name="Life" type="Area2D" unique_id=381503551]
+scale = Vector2(0.3, 0.3)
+script = ExtResource("1_f0slc")
+
+[node name="Area2D" type="Sprite2D" parent="." unique_id=597726439]
+texture = ExtResource("2_soojs")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1019508914]
+position = Vector2(1, -16)
+shape = SubResource("CircleShape2D_4e1r7")

@@ -51,3 +51,10 @@ func on_snake_eat(food: Food):
 	var main: Main = get_parent()
 	main.add_score(10)
 	food.queue_free()
+
+
+func _on_cursor_hit() -> void:
+	if Globals.nb_lifes > 1:
+		Globals.remove_life()
+	else:
+		get_tree().change_scene_to_file("res://GameOver/GameOver.tscn")

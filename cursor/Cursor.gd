@@ -1,6 +1,8 @@
 class_name Cursor
 extends Area2D
 
+signal hit
+
 var is_invincible := false
 
 
@@ -16,3 +18,8 @@ func start_invincible():
 	await get_tree().create_timer(2.0).timeout
 	$AnimationPlayer.stop()
 	$CollisionShape2D.set_deferred("disabled", false)
+
+
+func get_hit():
+	start_invincible()
+	hit.emit()
