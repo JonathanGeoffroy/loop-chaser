@@ -17,7 +17,13 @@ func _ready() -> void:
 
 func change_direction():
 	angle = Globals.rng.randf_range(0, TAU)
-	$Sprite2D.rotation = angle
+	var tween := create_tween().set_parallel(true)
+	(
+		tween
+		. tween_property($Sprite2D, "rotation", angle, Globals.animation_speed)
+		. set_trans(Tween.TRANS_QUAD)
+		. set_ease(Tween.EASE_IN)
+	)
 
 
 func dash() -> void:
