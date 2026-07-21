@@ -2,8 +2,12 @@ extends CanvasLayer
 
 var LifeFactory = preload("res://Life/Life.tscn")
 
+var tween: Tween
+
 
 func _ready() -> void:
+	tween = create_tween().set_parallel(true)
+
 	Globals.life_changed.connect(on_life_changed)
 	on_life_changed(Globals.nb_lifes)
 
@@ -17,6 +21,25 @@ func _ready() -> void:
 
 func set_score(score: int) -> void:
 	%Score.text = str(score)
+	if tween and tween.is_running():
+		tween.kill()
+	%Score.scale = Vector2(1.4, 1.4)
+	%Score.modulate = Color.RED
+
+	tween = create_tween().set_parallel(true)
+
+	(
+		tween
+		. tween_property(%Score, "scale", Vector2.ONE, Globals.animation_speed)
+		. set_trans(Tween.TRANS_EXPO)
+		. set_ease(Tween.EASE_OUT)
+	)
+	(
+		tween
+		. tween_property(%Score, "modulate", Color.WHITE, Globals.animation_speed)
+		. set_trans(Tween.TRANS_EXPO)
+		. set_ease(Tween.EASE_OUT)
+	)
 
 
 func on_life_changed(life: int) -> void:

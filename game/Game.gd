@@ -90,18 +90,19 @@ func on_snake_circled(snake_parts: Array[Node2D]) -> void:
 		(
 			foods_to_remove.size() * Globals.food_points
 			+ generators_to_remove.size() * Globals.generator_points
-		)
+		),
+		center
 	)
 
 
-func add_score(amount: int):
+func add_score(amount: int, position: Vector2):
 	var main: Main = get_parent()
-	main.add_score(amount)
+	main.add_score(amount, position)
 
 
 func on_snake_eat(food: Food):
 	var main: Main = get_parent()
-	main.add_score(10)
+	add_score(10, food.global_position)
 	foods.erase(food)
 	food.queue_free()
 
