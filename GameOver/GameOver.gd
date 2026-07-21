@@ -1,22 +1,35 @@
 extends Control
 
 var username_regexp = RegEx.new()
-
+var base_url: String;
 
 func _ready() -> void:
 	username_regexp.compile("[^a-zA-Z0-9_]")
-	var token := compute_token()
+	base_url = get_base_url()
 
-	if token != null:
-		Globals.set_seed(token.seed)
-		Globals.chasing_name = token.user_name
-		Globals.chasing_score = token.score
+	%UserName.text_changed.connect(_on_username_changed)
 
 	%Highscore.text = str(Globals.score)
 	%UserName.text = Globals.user_name
 	%URL.text = compute_url()
-
-
+	
+	if Globals.chasing_score > 0:
+		%ChasingLabel.text = Globals.chasing_name;
+		%ChasingScoreLabel.text = Globals.chasing_score;
+		
+	var user_play_alone := Globals.chasing_score == 0
+	var user_win := user_play_alone or Globals.score > Globals.chasing_score;
+	
+	%ChasingScoreContainer.visible = !user_play_alone;
+	%ChasingScoreSpacer.visible = !user_play_alone;
+	
+	var container_to_animate = %PlayerScoreContainer if user_win else %ChasingScoreLabel;
+	for child in container_to_animate.get_children():
+		animate(child);
+		
+	if Globals.chasing_score:
+		%AnimationPlayer.get_animation("winner");
+	
 func _on_copy_button_pressed() -> void:
 	DisplayServer.clipboard_set(%URL.text)
 	%CopyButton.text = "Copied!"
@@ -28,9 +41,8 @@ func _on_retry_button_pressed() -> void:
 
 
 func compute_url() -> String:
-	var url := get_base_url()
 	var token := Token.serialize(Globals.seed, Globals.score, Globals.user_name)
-	return str(url, "?", token)
+	return str(base_url, "?", token)
 
 
 func get_base_url() -> String:
@@ -45,9 +57,9 @@ func get_base_url() -> String:
 	return ""
 
 
-func _on_username_changed() -> void:
-	var text: String = username_regexp.sub(%UserName.text, "", true)
-	if text != %UserName.text:
+func _on_username_changed(new_text: String) -> void:
+	var text: String = username_regexp.sub(new_text, "", true)
+	if text != new_text:
 		%UserName.text = text
 		%UserName.caret_column = text.length()
 
@@ -55,31 +67,16 @@ func _on_username_changed() -> void:
 	%URL.text = compute_url()
 
 
-func compute_token() -> TokenValue:
-	var url_token = compute_url_token()
-	if url_token != "":
-		var token = Token.deserialize(url_token)
-		return token
-	return null
-
-
-func compute_url_token() -> String:
-	if OS.get_name() == "Web":
-		var token_script := """
-		(function() {
-			var ref = document.referrer;
-			if (ref) {
-				var url = new URL(ref);
-				var t = url.searchParams.get("token");
-				if (t) return t;
-			}
-			var localUrl = new URL(window.location.href);
-			return localUrl.searchParams.get("token") || "";
-		})();
-		"""
-
-		var result = JavaScriptBridge.eval(token_script, true)
-		if result != null and str(result) != "":
-			return str(result)
-
-	return ""
+func animate(label: Label) -> void:
+	label.pivot_offset = label.size / 2.0
+	
+	var tween := create_tween().set_parallel(true).set_loops();
+	
+	tween.tween_property(label, "scale", Vector2(1.5, 1.5), 0.15)\
+		.set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_OUT)
+	tween.tween_property(label, "modulate", Color.GOLD, 0.15)
+	
+	tween.chain().set_parallel(true)
+	tween.tween_property(label, "scale", Vector2.ONE, 0.2)\
+		.set_trans(Tween.TRANS_BOUNCE).set_ease(Tween.EASE_OUT)
+	tween.tween_property(label, "modulate", Color.WHITE, 0.2)

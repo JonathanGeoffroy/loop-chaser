@@ -40,7 +40,7 @@ func set_score(score: int) -> void:
 		. set_trans(Tween.TRANS_EXPO)
 		. set_ease(Tween.EASE_OUT)
 	)
-
+	
 
 func on_life_changed(life: int) -> void:
 	for child in %Lifes.get_children():

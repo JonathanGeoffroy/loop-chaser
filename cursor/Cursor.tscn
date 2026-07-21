@@ -24,7 +24,7 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_dlxi6"]
 resource_name = "invincibility"
-length = 0.39999999999999997
+length = 0.4
 loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -45,6 +45,9 @@ _data = {
 &"invincibility": SubResource("Animation_dlxi6")
 }
 
+[sub_resource type="Gradient" id="Gradient_ofrjf"]
+offsets = PackedFloat32Array(0, 0.49541286)
+
 [node name="Cursor" type="Area2D" unique_id=2046943281 groups=["cursor"]]
 scale = Vector2(0.2, 0.2)
 collision_layer = 4
@@ -62,6 +65,19 @@ disabled = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=2032429721]
 libraries/ = SubResource("AnimationLibrary_sesew")
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="." unique_id=638934015]
+amount = 16
+lifetime = 0.2
+explosiveness = 0.23
+randomness = 0.27
+lifetime_randomness = 0.41
+emission_shape = 1
+emission_sphere_radius = 106.45
+particle_flag_align_y = true
+gravity = Vector2(0, 0)
+radial_accel_max = 65.91
+color_ramp = SubResource("Gradient_ofrjf")
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

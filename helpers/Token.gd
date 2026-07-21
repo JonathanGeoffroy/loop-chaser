@@ -61,3 +61,33 @@ func _xor_transform(bytes: PackedByteArray, key: Array[int]) -> PackedByteArray:
 		result[i] = bytes[i] ^ key[i % key_length]
 
 	return result
+
+
+func compute_token() -> TokenValue:
+	var url_token = compute_url_token();
+	if url_token != "":
+		var token = Token.deserialize(url_token)
+		return token
+	return null
+
+
+func compute_url_token() -> String:
+	if OS.get_name() == "Web":
+		var token_script := """
+		(function() {
+			var ref = document.referrer;
+			if (ref) {
+				var url = new URL(ref);
+				var t = url.searchParams.get("token");
+				if (t) return t;
+			}
+			var localUrl = new URL(window.location.href);
+			return localUrl.searchParams.get("token") || "";
+		})();
+		"""
+
+		var result = JavaScriptBridge.eval(token_script, true)
+		if result != null and str(result) != "":
+			return str(result)
+
+	return ""
