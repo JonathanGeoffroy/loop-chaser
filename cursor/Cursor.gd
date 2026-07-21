@@ -15,9 +15,9 @@ func start_invincible():
 	is_invincible = true
 	$AnimationPlayer.play("invincibility")
 	$CollisionShape2D.set_deferred("disabled", true)
-	await get_tree().create_timer(2.0).timeout
-	$AnimationPlayer.stop()
-	$CollisionShape2D.set_deferred("disabled", false)
+	#await get_tree().create_timer(2.0).timeout
+	#$AnimationPlayer.stop()
+	#$CollisionShape2D.set_deferred("disabled", false)
 
 
 func get_hit():

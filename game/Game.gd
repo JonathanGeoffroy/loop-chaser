@@ -52,15 +52,35 @@ func on_snake_circled(snake_parts: Array[Node2D]) -> void:
 	if not Geometry2D.is_polygon_clockwise(polygon):
 		polygon.reverse()
 
-	for child in get_children():
-		if child.is_in_group("food"):
-			var food: Food = child
-			if Geometry2D.is_point_in_polygon(food.global_position, polygon):
-				# TODO JGE compute multiplicator
-				on_snake_eat(food)
+	var foods_to_remove: Array[Food] = []
+	var generators_to_remove: Array[Generator] = []
+
+	for food in foods:
+		if Geometry2D.is_point_in_polygon(food.global_position, polygon):
+			foods_to_remove.append(food)
+			foods.erase(food)
+			food.queue_free()
+
+	for generator in generators:
+		if Geometry2D.is_point_in_polygon(generator.global_position, polygon):
+			generators_to_remove.append(generator)
+			generators.erase(generator)
+			generator.queue_free()
+
+	add_score(
+		(
+			foods_to_remove.size() * Globals.food_points
+			+ generators_to_remove.size() * Globals.generator_points
+		)
+	)
 
 	for i in range(1, snake_parts.size()):
 		snake_parts[i].queue_free()
+
+
+func add_score(amount: int):
+	var main: Main = get_parent()
+	main.add_score(amount)
 
 
 func on_snake_eat(food: Food):
@@ -78,14 +98,20 @@ func _on_cursor_hit() -> void:
 
 
 func _on_timer_timeout() -> void:
-	var random = Globals.rng.randi_range(0, 9)
-	print(random)
-	if random < 1:
+	if foods.is_empty():
+		for food in foods:
+			food.change_direction()
+	elif generators.is_empty():
 		create_generator()
-	elif random < 4:
+
+	var random = Globals.rng.randi_range(0, 99)
+
+	if random < 5:
+		create_generator()
+	elif random < 40:
 		for food in foods:
 			food.dash()
-	elif random < 7:
+	elif random < 70:
 		for food in foods:
 			food.change_direction()
 	else:
