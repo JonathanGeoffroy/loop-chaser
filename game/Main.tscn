@@ -12,3 +12,4 @@ unique_name_in_owner = true
 
 [node name="Game" parent="." unique_id=1180098399 instance=ExtResource("2_2fjjk")]
 position = Vector2(0, 41)
+nb_food_start = null

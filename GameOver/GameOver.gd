@@ -8,7 +8,7 @@ func _ready() -> void:
 	var token := compute_token()
 
 	if token != null:
-		Globals.seed = token.seed
+		Globals.set_seed(token.seed)
 		Globals.chasing_name = token.user_name
 		Globals.chasing_score = token.score
 

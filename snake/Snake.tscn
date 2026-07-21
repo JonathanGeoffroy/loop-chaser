@@ -6,5 +6,5 @@
 [node name="Snake" type="Node2D" unique_id=1861206103]
 script = ExtResource("1_53qfa")
 
-[node name="Follower" parent="." unique_id=2029178058 instance=ExtResource("2_7ovse")]
+[node name="Follower" parent="." unique_id=2029178058 groups=["chaser"] instance=ExtResource("2_7ovse")]
 unique_name_in_owner = true

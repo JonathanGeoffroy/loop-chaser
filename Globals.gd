@@ -9,9 +9,15 @@ var nb_lifes := 3
 var seed := 0
 var score := 0
 var user_name := "Highscore_Chaser"
+var rng := RandomNumberGenerator.new()
 
 var chasing_score := 0
 var chasing_name := ""
+
+
+func set_seed(seed: int):
+	self.seed = seed
+	rng.seed = seed
 
 
 func reset():

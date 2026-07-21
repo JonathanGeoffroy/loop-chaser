@@ -13,9 +13,9 @@ unique_name_in_owner = true
 [node name="Snake" parent="." unique_id=136338252 instance=ExtResource("2_qdja7")]
 unique_name_in_owner = true
 
-[node name="FoodGeneratorTimer" type="Timer" parent="." unique_id=103055315]
+[node name="Timer" type="Timer" parent="." unique_id=103055315]
 unique_name_in_owner = true
 autostart = true
 
 [connection signal="hit" from="Cursor" to="." method="_on_cursor_hit"]
-[connection signal="timeout" from="FoodGeneratorTimer" to="." method="on_generate_food"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

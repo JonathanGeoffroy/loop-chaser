@@ -1,21 +1,22 @@
 [gd_scene format=3 uid="uid://bjlukwmkefsiu"]
 
-[ext_resource type="Texture2D" uid="uid://f8ic1idggd4f" path="res://icon.svg" id="1_7w6rn"]
 [ext_resource type="Script" uid="uid://bbacw3ik4psag" path="res://snake/SnakeHead.gd" id="1_nxuvt"]
+[ext_resource type="Texture2D" uid="uid://b4bsihvkc1drq" path="res://snake/snakeHead.png" id="2_nxuvt"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_pjjmk"]
 radius = 61.666664
 height = 123.33333
 
-[node name="SnakeHead" type="Area2D" unique_id=1813477475 groups=["snakePart"]]
+[node name="SnakeHead" type="Area2D" unique_id=1813477475 groups=["chaser", "snakePart"]]
 scale = Vector2(0.6, 0.6)
 collision_mask = 7
 script = ExtResource("1_nxuvt")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=780807643]
-texture = ExtResource("1_7w6rn")
+texture = ExtResource("2_nxuvt")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1648181229]
 shape = SubResource("CapsuleShape2D_pjjmk")
 
 [connection signal="area_entered" from="." to="." method="on_colide"]
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

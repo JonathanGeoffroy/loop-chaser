@@ -30,6 +30,7 @@ window/stretch/aspect="expand"
 food=""
 snakePart=""
 cursor=""
+chaser=""
 
 [layer_names]
 

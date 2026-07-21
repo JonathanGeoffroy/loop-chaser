@@ -6,13 +6,11 @@ signal tail_hitted(snakePart: SnakePart)
 
 
 func on_colide(area: Area2D) -> void:
-	if area.is_in_group("food"):
-		var food: Food = area
-		eated.emit(area)
-
-	elif area.is_in_group("snakePart"):
+	if area.is_in_group("snakePart"):
 		tail_hitted.emit(area)
 
-	elif area.is_in_group("cursor"):
-		var cursor: Cursor = area
-		cursor.get_hit()
+
+func _on_body_entered(body: Node2D) -> void:
+	if body.is_in_group("food"):
+		var food: Food = body
+		eated.emit(body)

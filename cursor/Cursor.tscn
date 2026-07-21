@@ -48,7 +48,7 @@ _data = {
 [node name="Cursor" type="Area2D" unique_id=2046943281 groups=["cursor"]]
 scale = Vector2(0.2, 0.2)
 collision_layer = 4
-collision_mask = 0
+collision_mask = 3
 script = ExtResource("1_yx3cf")
 
 [node name="Follower" parent="." unique_id=2029178058 instance=ExtResource("2_ofrjf")]
@@ -61,3 +61,6 @@ shape = SubResource("CircleShape2D_pjjmk")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=2032429721]
 libraries/ = SubResource("AnimationLibrary_sesew")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
