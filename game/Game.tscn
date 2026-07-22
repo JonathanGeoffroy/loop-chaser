@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://bgfwm2uxi1mok" path="res://game/Game.gd" id="1_fafdd"]
 [ext_resource type="PackedScene" uid="uid://bldrtedl0q6sf" path="res://cursor/Cursor.tscn" id="2_m71xk"]
 [ext_resource type="PackedScene" uid="uid://dpnqaxtcfudyj" path="res://snake/Snake.tscn" id="2_qdja7"]
+[ext_resource type="AudioStream" uid="uid://da3qlctcljetk" path="res://game/points.mp3" id="4_i75et"]
 
 [node name="Game" type="Node2D" unique_id=1180098399]
 script = ExtResource("1_fafdd")
@@ -16,6 +17,9 @@ unique_name_in_owner = true
 [node name="Timer" type="Timer" parent="." unique_id=103055315]
 unique_name_in_owner = true
 autostart = true
+
+[node name="PointsStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1958083775]
+stream = ExtResource("4_i75et")
 
 [connection signal="hit" from="Cursor" to="." method="_on_cursor_hit"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

@@ -35,3 +35,6 @@ func remove_life():
 	if nb_lifes >= 1:
 		nb_lifes -= 1
 		life_changed.emit(nb_lifes)
+
+func _ready() -> void:
+	Input.mouse_mode = Input.MOUSE_MODE_HIDDEN

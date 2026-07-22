@@ -1,11 +1,17 @@
 [gd_scene format=3 uid="uid://d0jmrdp6kel3j"]
 
 [ext_resource type="Script" uid="uid://2igsx3h2phcq" path="res://GameOver/GameOver.gd" id="1_bed4b"]
+[ext_resource type="PackedScene" uid="uid://bldrtedl0q6sf" path="res://cursor/Cursor.tscn" id="2_pyvlu"]
+[ext_resource type="AudioStream" uid="uid://ck3raeaubhvpl" path="res://GameOver/win.mp3" id="3_j0mwb"]
+[ext_resource type="AudioStream" uid="uid://b7305fgni454b" path="res://GameOver/loose.mp3" id="4_8ctgv"]
 
 [node name="GameOver" type="Control" unique_id=1403696943]
 layout_mode = 3
 anchors_preset = 0
 script = ExtResource("1_bed4b")
+
+[node name="Cursor" parent="." unique_id=2046943281 instance=ExtResource("2_pyvlu")]
+z_index = 10
 
 [node name="CenterContainer" type="CenterContainer" parent="." unique_id=274307897]
 layout_mode = 0
@@ -25,6 +31,7 @@ text = "Game over"
 
 [node name="ScoreContainer" type="HBoxContainer" parent="CenterContainer/VBoxContainer" unique_id=1207670475]
 layout_mode = 2
+alignment = 1
 
 [node name="PlayerScoreContainer" type="HBoxContainer" parent="CenterContainer/VBoxContainer/ScoreContainer" unique_id=1125625705]
 unique_name_in_owner = true
@@ -105,6 +112,12 @@ text = "Copy URL"
 unique_name_in_owner = true
 layout_mode = 2
 text = "Retry ?"
+
+[node name="WinStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=57806137]
+stream = ExtResource("3_j0mwb")
+
+[node name="LooseStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=666348640]
+stream = ExtResource("4_8ctgv")
 
 [connection signal="pressed" from="CenterContainer/VBoxContainer/URLContainer/CopyButton" to="." method="_on_copy_button_pressed"]
 [connection signal="pressed" from="CenterContainer/VBoxContainer/RetryButton" to="." method="_on_retry_button_pressed"]

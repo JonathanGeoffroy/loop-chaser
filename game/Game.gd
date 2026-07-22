@@ -16,8 +16,9 @@ func _ready() -> void:
 	%Snake.eated.connect(on_snake_eat)
 
 	for i in nb_generators_start:
-		create_generator()
-
+		var generator = create_generator()
+		for g in range(0, 3):
+			generator.generate_food();
 	handle_start()
 
 
@@ -28,9 +29,13 @@ func handle_start():
 func add_food(food: Food):
 	foods.append(food)
 	add_child(food)
+	food.exited_screen.connect(remove_food);
 
+func remove_food(food: Food) -> void:
+	foods.erase(food);
+	food.queue_free();
 
-func create_generator():
+func create_generator() -> Generator:
 	var viewport_size: Vector2 = get_viewport_rect().size
 	var screen_width: float = viewport_size.x
 	var screen_height: float = viewport_size.y
@@ -41,6 +46,8 @@ func create_generator():
 	generator.global_position = position
 	generators.append(generator)
 	add_child(generator)
+	
+	return generator
 
 
 func on_snake_circled(snake_parts: Array[Node2D]) -> void:
@@ -96,9 +103,10 @@ func on_snake_circled(snake_parts: Array[Node2D]) -> void:
 
 
 func add_score(amount: int, position: Vector2):
-	var main: Main = get_parent()
-	main.add_score(amount, position)
-
+	if amount > 0:
+		var main: Main = get_parent()
+		main.add_score(amount, position)
+		$PointsStreamPlayer.play()
 
 func on_snake_eat(food: Food):
 	add_score(10, food.global_position)

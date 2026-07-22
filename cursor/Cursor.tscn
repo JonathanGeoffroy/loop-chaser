@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://cyuxmqr2llwxq" path="res://cursor/Cursor.gd" id="1_yx3cf"]
 [ext_resource type="Texture2D" uid="uid://5bpkthxwlxnb" path="res://cursor/fly1.png" id="3_dlxi6"]
+[ext_resource type="AudioStream" uid="uid://s40iieimwxef" path="res://cursor/hit.mp3" id="4_dlxi6"]
 [ext_resource type="Texture2D" uid="uid://dk7yvyvnlpd5f" path="res://cursor/fly2.png" id="4_sesew"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_pjjmk"]
@@ -72,7 +73,7 @@ script = ExtResource("1_yx3cf")
 [node name="Sprite2D" type="AnimatedSprite2D" parent="." unique_id=1765918608]
 sprite_frames = SubResource("SpriteFrames_pjjmk")
 autoplay = "default"
-frame_progress = 0.013415123
+frame_progress = 0.6006219
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1314114337]
 position = Vector2(0, -2.3841858e-07)
@@ -95,6 +96,10 @@ particle_flag_align_y = true
 gravity = Vector2(0, 0)
 radial_accel_max = 65.91
 color_ramp = SubResource("Gradient_ofrjf")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=432468307]
+stream = ExtResource("4_dlxi6")
+volume_db = 10.0
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

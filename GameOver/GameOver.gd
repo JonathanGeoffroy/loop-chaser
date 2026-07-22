@@ -14,22 +14,25 @@ func _ready() -> void:
 	%URL.text = compute_url()
 	
 	if Globals.chasing_score > 0:
-		%ChasingLabel.text = Globals.chasing_name;
-		%ChasingScoreLabel.text = Globals.chasing_score;
-		
+		%ChasingLabel.text = str(Globals.chasing_name, " score:");
+		%ChasingScoreLabel.text = str(Globals.chasing_score);
+	else:
+		%ChasingScoreSpacer.visible = false;
+		%ChasingScoreContainer.visible = false;
+
 	var user_play_alone := Globals.chasing_score == 0
 	var user_win := user_play_alone or Globals.score > Globals.chasing_score;
 	
-	%ChasingScoreContainer.visible = !user_play_alone;
-	%ChasingScoreSpacer.visible = !user_play_alone;
+	if user_win:
+		$WinStreamPlayer.play();
+	else:
+		$LooseStreamPlayer.play();
+
 	
 	var container_to_animate = %PlayerScoreContainer if user_win else %ChasingScoreLabel;
 	for child in container_to_animate.get_children():
 		animate(child);
-		
-	if Globals.chasing_score:
-		%AnimationPlayer.get_animation("winner");
-	
+
 func _on_copy_button_pressed() -> void:
 	DisplayServer.clipboard_set(%URL.text)
 	%CopyButton.text = "Copied!"

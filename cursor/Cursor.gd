@@ -23,6 +23,7 @@ func start_invincible():
 func get_hit():
 	start_invincible()
 	hit.emit()
+	$AudioStreamPlayer.play();
 
 
 func _on_area_entered(area: Area2D) -> void:

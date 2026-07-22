@@ -1,6 +1,8 @@
 class_name Food
 extends CharacterBody2D
 
+signal exited_screen(food: Food);
+
 var direction := 0.0
 var is_moving: bool = false
 
@@ -13,8 +15,12 @@ var angle := 0.0
 func _ready() -> void:
 	var scale_factor := Globals.food_size / 128.0
 	scale = Vector2(scale_factor, scale_factor)
+	$CollisionShape2D.disabled = true;
+	get_tree().create_timer(0.5).timeout.connect(enable_collision)
 
-
+func enable_collision():
+	$CollisionShape2D.disabled = false;
+		
 func change_direction():
 	angle = Globals.rng.randf_range(0, TAU)
 	var tween := create_tween().set_parallel(true)
@@ -54,3 +60,7 @@ func appears():
 
 func disable():
 	$CollisionShape2D.disabled = true
+
+
+func _on_exit_screen() -> void:
+	exited_screen.emit(self);
