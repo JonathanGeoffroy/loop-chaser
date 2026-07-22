@@ -7,6 +7,13 @@
 [node name="Main" type="Node2D" unique_id=575476164]
 script = ExtResource("1_2fjjk")
 
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1288336604]
+offset_left = -2.0
+offset_top = -4.0
+offset_right = 1168.0
+offset_bottom = 683.0
+color = Color(0.35667074, 0.14511529, 2.4065375e-08, 1)
+
 [node name="HUD" parent="." unique_id=1323792389 instance=ExtResource("1_8gaax")]
 unique_name_in_owner = true
 

@@ -37,7 +37,7 @@ func _on_copy_button_pressed() -> void:
 
 func _on_retry_button_pressed() -> void:
 	Globals.score = 0
-	get_tree().change_scene_to_file("res://game/Game.tscn")
+	get_tree().change_scene_to_file("res://game/Main.tscn")
 
 
 func compute_url() -> String:

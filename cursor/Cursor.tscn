@@ -1,11 +1,26 @@
 [gd_scene format=3 uid="uid://bldrtedl0q6sf"]
 
-[ext_resource type="Texture2D" uid="uid://dsv66ria7kdpw" path="res://cursor/fly.png" id="1_m2vak"]
 [ext_resource type="Script" uid="uid://cyuxmqr2llwxq" path="res://cursor/Cursor.gd" id="1_yx3cf"]
-[ext_resource type="PackedScene" uid="uid://cc7u5aa7fvkh6" path="res://helpers/Follower.tscn" id="2_ofrjf"]
+[ext_resource type="Texture2D" uid="uid://5bpkthxwlxnb" path="res://cursor/fly1.png" id="3_dlxi6"]
+[ext_resource type="Texture2D" uid="uid://dk7yvyvnlpd5f" path="res://cursor/fly2.png" id="4_sesew"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_pjjmk"]
-radius = 64.03124
+[sub_resource type="SpriteFrames" id="SpriteFrames_pjjmk"]
+animations = [{
+"frames": [{
+"duration": 0.2,
+"texture": ExtResource("3_dlxi6")
+}, {
+"duration": 0.2,
+"texture": ExtResource("4_sesew")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_dlxi6"]
+radius = 32.499996
+height = 94.99999
 
 [sub_resource type="Animation" id="Animation_ofrjf"]
 length = 0.001
@@ -49,18 +64,20 @@ _data = {
 offsets = PackedFloat32Array(0, 0.49541286)
 
 [node name="Cursor" type="Area2D" unique_id=2046943281 groups=["cursor"]]
-scale = Vector2(0.2, 0.2)
+scale = Vector2(0.4, 0.4)
 collision_layer = 4
 collision_mask = 3
 script = ExtResource("1_yx3cf")
 
-[node name="Follower" parent="." unique_id=2029178058 instance=ExtResource("2_ofrjf")]
-
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1131719538]
-texture = ExtResource("1_m2vak")
+[node name="Sprite2D" type="AnimatedSprite2D" parent="." unique_id=1765918608]
+sprite_frames = SubResource("SpriteFrames_pjjmk")
+autoplay = "default"
+frame_progress = 0.013415123
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1314114337]
-shape = SubResource("CircleShape2D_pjjmk")
+position = Vector2(0, -2.3841858e-07)
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_dlxi6")
 disabled = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=2032429721]

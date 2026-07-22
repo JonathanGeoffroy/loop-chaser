@@ -101,7 +101,6 @@ func add_score(amount: int, position: Vector2):
 
 
 func on_snake_eat(food: Food):
-	var main: Main = get_parent()
 	add_score(10, food.global_position)
 	foods.erase(food)
 	food.queue_free()

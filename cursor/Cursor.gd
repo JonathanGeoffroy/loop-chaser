@@ -8,8 +8,8 @@ var is_invincible := false
 
 func _process(delta: float) -> void:
 	var target_pos = get_global_mouse_position()
+	look_at(target_pos)
 	global_position = target_pos
-
 
 func start_invincible():
 	is_invincible = true
