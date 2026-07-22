@@ -62,9 +62,13 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 32
 text = "1234"
 
-[node name="Label" type="Label" parent="CenterContainer/VBoxContainer" unique_id=45305452]
+[node name="Label" type="RichTextLabel" parent="CenterContainer/VBoxContainer" unique_id=334942474]
 layout_mode = 2
-text = "Time to summon other High-score chasers! Invite friends to defeat your score:"
+bbcode_enabled = true
+text = "Time to summon other 
+[b][color=#0f9346]High-score chasers ![/color][/b] 
+Invite friends to challenge your score:"
+fit_content = true
 horizontal_alignment = 1
 
 [node name="VBoxContainer" type="HBoxContainer" parent="CenterContainer/VBoxContainer" unique_id=865351060]
