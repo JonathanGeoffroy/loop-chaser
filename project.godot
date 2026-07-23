@@ -13,7 +13,7 @@ config_version=5
 config/name="Loop Chaser"
 run/main_scene="uid://cs6xdy4wm4t07"
 config/features=PackedStringArray("4.7", "GL Compatibility")
-config/icon="res://icon.svg"
+config/icon="uid://cn7fiko5obu2w"
 
 [autoload]
 

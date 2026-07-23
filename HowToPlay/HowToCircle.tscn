@@ -6,15 +6,15 @@
 [sub_resource type="SpriteFrames" id="SpriteFrames_pjjmk"]
 animations = [{
 "frames": [{
-"duration": 1.0,
+"duration": 0.25,
 "texture": ExtResource("1_dd5tg")
 }, {
-"duration": 1.0,
+"duration": 0.25,
 "texture": ExtResource("2_lhrhd")
 }],
 "loop": 1,
 "name": &"default",
-"speed": 1.0
+"speed": 0.5
 }]
 
 [node name="HowToCircle" type="Node2D" unique_id=712203746]
@@ -24,7 +24,7 @@ position = Vector2(605, 228)
 scale = Vector2(0.675, 0.675)
 sprite_frames = SubResource("SpriteFrames_pjjmk")
 autoplay = "default"
-frame_progress = 0.17377652
+frame_progress = 0.53163993
 
 [node name="Label" type="RichTextLabel" parent="." unique_id=167287743]
 offset_left = 1.0

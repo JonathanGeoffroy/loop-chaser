@@ -44,18 +44,18 @@ func _on_retry_button_pressed() -> void:
 
 
 func compute_url() -> String:
-	var token := Token.serialize(Globals.seed, Globals.score, Globals.user_name)
-	return str(base_url, "?", token)
-
+	return str(Token.serialize(Globals.seed, Globals.score, Globals.user_name));
 
 func get_base_url() -> String:
 	if OS.get_name() == "Web":
 		var referrer = JavaScriptBridge.eval("document.referrer", true)
 		if referrer != null and str(referrer) != "":
-			return str(referrer)
+			print(str(referrer));
+			return str(referrer, "loop-chaser")
 
 		var local_href = JavaScriptBridge.eval("window.location.href", true)
 		if local_href != null and str(local_href) != "":
+			print(str(local_href));
 			return str(local_href)
 	return ""
 
@@ -73,13 +73,12 @@ func _on_username_changed(new_text: String) -> void:
 func animate(label: Label) -> void:
 	label.pivot_offset = label.size / 2.0
 	
-	var tween := create_tween().set_parallel(true).set_loops();
+	var tween := create_tween().set_loops()
 	
-	tween.tween_property(label, "scale", Vector2(1.5, 1.5), 0.15)\
+	tween.tween_property(label, "scale", Vector2(1.5, 1.5), 0.15) \
 		.set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_OUT)
-	tween.tween_property(label, "modulate", Color.GOLD, 0.15)
+	tween.parallel().tween_property(label, "modulate", Color.GOLD, 0.15)
 	
-	tween.chain().set_parallel(true)
-	tween.tween_property(label, "scale", Vector2.ONE, 0.2)\
+	tween.tween_property(label, "scale", Vector2.ONE, 0.2) \
 		.set_trans(Tween.TRANS_BOUNCE).set_ease(Tween.EASE_OUT)
-	tween.tween_property(label, "modulate", Color.WHITE, 0.2)
+	tween.parallel().tween_property(label, "modulate", Color.WHITE, 0.2)

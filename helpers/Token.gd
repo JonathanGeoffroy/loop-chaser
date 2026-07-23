@@ -10,13 +10,13 @@ func serialize(seed: int, score: int, username: String) -> String:
 	buffer.put_32(score)
 
 	var obfuscated_bytes := _xor_transform(buffer.data_array, OBFUSCATION_KEY)
-	var b64_data: String = Marshalls.raw_to_base64(obfuscated_bytes)
-	var clean_b64: String = b64_data.replace("+", "-").replace("/", "_").replace("=", "")
-	var clean_username: String = username.strip_edges().replace(":", "").replace("?", "").replace(
-		"&", ""
-	)
+	
+	# Godot 4 method to convert PackedByteArray to Hex String
+	var hex_data: String = obfuscated_bytes.hex_encode()
+	
+	var clean_username: String = username.strip_edges().replace(":", "").replace("?", "").replace("&", "")
 
-	return clean_username + ":" + clean_b64
+	return clean_username + ":" + hex_data
 
 
 func deserialize(payload: String) -> TokenValue:
@@ -25,14 +25,10 @@ func deserialize(payload: String) -> TokenValue:
 		return null
 
 	var username: String = parts[0]
-	var obfuscated_str: String = parts[1]
+	var hex_str: String = parts[1]
 
-	var b64_str: String = obfuscated_str.replace("-", "+").replace("_", "/")
-	var mod: int = b64_str.length() % 4
-	if mod > 0:
-		b64_str += "=".repeat(4 - mod)
-
-	var obfuscated_bytes: PackedByteArray = Marshalls.base64_to_raw(b64_str)
+	# Parse hex string back to PackedByteArray
+	var obfuscated_bytes := _hex_to_bytes(hex_str)
 
 	if obfuscated_bytes.size() < 12:
 		return null
@@ -47,6 +43,7 @@ func deserialize(payload: String) -> TokenValue:
 	var score: int = buffer.get_32()
 
 	var token := TokenValue.new()
+	token.username = username
 	token.seed = seed
 	token.score = score
 	return token
@@ -63,31 +60,15 @@ func _xor_transform(bytes: PackedByteArray, key: Array[int]) -> PackedByteArray:
 	return result
 
 
-func compute_token() -> TokenValue:
-	var url_token = compute_url_token();
-	if url_token != "":
-		var token = Token.deserialize(url_token)
-		return token
-	return null
-
-
-func compute_url_token() -> String:
-	if OS.get_name() == "Web":
-		var token_script := """
-		(function() {
-			var ref = document.referrer;
-			if (ref) {
-				var url = new URL(ref);
-				var t = url.searchParams.get("token");
-				if (t) return t;
-			}
-			var localUrl = new URL(window.location.href);
-			return localUrl.searchParams.get("token") || "";
-		})();
-		"""
-
-		var result = JavaScriptBridge.eval(token_script, true)
-		if result != null and str(result) != "":
-			return str(result)
-
-	return ""
+# Helper function to convert Hex String -> PackedByteArray
+func _hex_to_bytes(hex: String) -> PackedByteArray:
+	var bytes := PackedByteArray()
+	if hex.length() % 2 != 0:
+		return bytes
+		
+	bytes.resize(hex.length() / 2)
+	for i in range(bytes.size()):
+		var byte_hex := hex.substr(i * 2, 2)
+		bytes[i] = ("0x" + byte_hex).hex_to_int()
+		
+	return bytes

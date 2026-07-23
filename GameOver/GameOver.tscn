@@ -106,7 +106,7 @@ editable = false
 [node name="CopyButton" type="Button" parent="CenterContainer/VBoxContainer/URLContainer" unique_id=696637450]
 unique_name_in_owner = true
 layout_mode = 2
-text = "Copy URL"
+text = "Copy Code to share"
 
 [node name="RetryButton" type="Button" parent="CenterContainer/VBoxContainer" unique_id=1736442471]
 unique_name_in_owner = true

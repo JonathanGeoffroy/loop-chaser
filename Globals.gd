@@ -38,3 +38,4 @@ func remove_life():
 
 func _ready() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_HIDDEN
+	pass
