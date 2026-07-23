@@ -19,3 +19,7 @@ func _ready():
 
 func _on_new_game_pressed() -> void:
 	get_tree().change_scene_to_file("res://game/Main.tscn")
+
+
+func _on_how_to_play_pressed() -> void:
+	get_tree().change_scene_to_file("res://HowToPlay/HowToPlay.tscn")

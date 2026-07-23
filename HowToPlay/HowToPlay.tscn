@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://dhcba5etu3ufw"]
+
+[ext_resource type="Script" uid="uid://7pd566fbpe4r" path="res://HowToPlay/HowToPlay.gd" id="1_01hw1"]
+[ext_resource type="PackedScene" uid="uid://cv31t5gg4llmc" path="res://HowToPlay/ClickToContinue.tscn" id="2_01hw1"]
+
+[node name="HowToPlay" type="Node2D" unique_id=61572938]
+script = ExtResource("1_01hw1")
+
+[node name="ClickToContinue" parent="." unique_id=1136973091 instance=ExtResource("2_01hw1")]
+offset_left = 5.0
+offset_top = 526.0
+offset_right = 1151.0
+offset_bottom = 560.0
+theme_override_font_sizes/font_size = 24
+horizontal_alignment = 1
+
+[connection signal="next" from="ClickToContinue" to="." method="on_next"]

@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://drx4kbg4hektc"]
+
+[ext_resource type="Texture2D" uid="uid://bu3mkdsk1wf3t" path="res://HowToPlay/howToEnnemies.png" id="2_j63ql"]
+
+[node name="HowToEnnemies" type="Node2D" unique_id=1860056779]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=2132130021]
+position = Vector2(605, 228)
+scale = Vector2(0.675, 0.675)
+texture = ExtResource("2_j63ql")
+
+[node name="Label" type="Label" parent="." unique_id=932972016]
+offset_top = 419.0
+offset_right = 1150.0
+offset_bottom = 527.0
+theme_override_font_sizes/font_size = 24
+text = "Bad luck ... Mind chasers !
+Snake and Frogs are after you. Avoid them !"
+horizontal_alignment = 1
+vertical_alignment = 1

@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://dhbg02bq175s"]
+
+[ext_resource type="Texture2D" uid="uid://cecs0haykpdtn" path="res://HowToPlay/howToLife.png" id="2_yhv43"]
+
+[node name="HowToLife" type="Node2D" unique_id=1860056779]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=2132130021]
+position = Vector2(605, 228)
+scale = Vector2(0.675, 0.675)
+texture = ExtResource("2_yhv43")
+
+[node name="Label" type="Label" parent="Sprite2D" unique_id=252550712]
+offset_left = -588.14813
+offset_top = 305.18518
+offset_right = 561.85187
+offset_bottom = 413.18518
+theme_override_font_sizes/font_size = 24
+text = "But mind your own life. 
+3 hits and you're a dead fly ...
+Good luck !"
+horizontal_alignment = 1
+vertical_alignment = 1

@@ -93,3 +93,4 @@ layout_mode = 2
 text = "Credits"
 
 [connection signal="pressed" from="MarginContainer/MenuSection/VBoxContainer/NewGame" to="." method="_on_new_game_pressed"]
+[connection signal="pressed" from="MarginContainer/MenuSection/VBoxContainer/HowToPlay" to="." method="_on_how_to_play_pressed"]

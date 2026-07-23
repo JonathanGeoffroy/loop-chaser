@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://7sy0014fttx1"]
+
+[ext_resource type="Texture2D" uid="uid://btxpf4kekkqka" path="res://HowToPlay/howToFrog.png" id="1_o1l4m"]
+
+[node name="HowToFrog" type="Node2D" unique_id=712203746]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1977794109]
+position = Vector2(605, 228)
+scale = Vector2(0.675, 0.675)
+texture = ExtResource("1_o1l4m")
+
+[node name="Label" type="Label" parent="." unique_id=226535663]
+offset_left = 1.0
+offset_top = 419.0
+offset_right = 1151.0
+offset_bottom = 527.0
+theme_override_font_sizes/font_size = 24
+text = "You clever fly ! 
+Make the snake eat frog to score !"
+horizontal_alignment = 1
+vertical_alignment = 1

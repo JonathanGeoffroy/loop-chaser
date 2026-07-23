@@ -1,0 +1,40 @@
+[gd_scene format=3 uid="uid://detcsjewjsods"]
+
+[ext_resource type="Texture2D" uid="uid://b0qhbrab02dsc" path="res://HowToPlay/howToCircle.png" id="1_dd5tg"]
+[ext_resource type="Texture2D" uid="uid://hkk70v7ygaqt" path="res://HowToPlay/howToCircle2.png" id="2_lhrhd"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_pjjmk"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_dd5tg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_lhrhd")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 1.0
+}]
+
+[node name="HowToCircle" type="Node2D" unique_id=712203746]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=223422676]
+position = Vector2(605, 228)
+scale = Vector2(0.675, 0.675)
+sprite_frames = SubResource("SpriteFrames_pjjmk")
+autoplay = "default"
+frame_progress = 0.17377652
+
+[node name="Label" type="RichTextLabel" parent="." unique_id=167287743]
+offset_left = 1.0
+offset_top = 419.0
+offset_right = 1157.0
+offset_bottom = 488.0
+size_flags_horizontal = 6
+size_flags_vertical = 6
+bbcode_enabled = true
+text = "Or even [b]chase[/b] itself !
+Let's squash everything around !"
+fit_content = true
+horizontal_alignment = 1
